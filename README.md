@@ -14,7 +14,7 @@ Este proyecto es una API construida con Node.js, Express, Sequelize y MySQL.
 
 ```bash
 git clone <URL-del-repositorio>
-cd node-sequelize-project
+cd API-REST-EFI
 ```
 
 ### 2. Instala las dependencias
