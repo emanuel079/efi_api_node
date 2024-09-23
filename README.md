@@ -21,11 +21,13 @@ cd API-REST-EFI
 npm install
 
 ### 3. Crea un archivo .env en la raíz del proyecto con la configuración de la base de datos:
+```bash
 DB_USERNAME = root - usuario de mysql personal  
 DB_PASSWORD = root1234 - contraseña de mysql personal  
 DB_DATABASE = nombre_de_tu_db - nombre de base de datos de mysql personal   
-DB_HOST=127.0.0.1    
-PORT=4000   
+DB_HOST = 127.0.0.1    
+PORT = 4000   
+```
 
 ### 4. Crea la base de datos en MySQL:
 Ubicados dentro de la carpeta del proyecto ejecutamos node createDatabase.js
