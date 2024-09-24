@@ -44,7 +44,10 @@ En este fragmento de código debemos respetar nuestro usuario y contraseña de M
 Ejecuta las migraciones para crear las tablas en la base de datos:  
 npx sequelize-cli db:migrate  
 
-### 6. Ejecutar el Servidor  
+### 6. Ejecutar seeders
+npx sequelize-cli db:seed:all
+
+### 7. Ejecutar el Servidor  
 Inicia el servidor con el siguiente comando:  
 npm start o npm run dev  
 
@@ -63,6 +66,9 @@ npx sequelize-cli db:migrate
 
 ### 3. Deshacer la última migración  
 npx sequelize-cli db:migrate:undo
+
+### 4. Crear un nuevo seeders
+npx sequelize-cli seed:generate --name create-user
 
 ## Estructura del Proyecto
 ├── src  
