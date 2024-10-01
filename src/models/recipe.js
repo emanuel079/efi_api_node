@@ -5,7 +5,6 @@ const {
 
 
 module.exports = (sequelize, DataTypes) => {
-  console.log("sequelize", sequelize);
 
   class Recipe extends Model {
     /**

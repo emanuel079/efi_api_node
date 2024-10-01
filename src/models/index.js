@@ -7,8 +7,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   dialect: 'mysql',
 });
 
-// console.log("Sequelize", sequelize);
-
 const db = {};
 
 // Inicialización de los modelos

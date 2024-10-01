@@ -2,18 +2,15 @@
 const {
   Model
 } = require('sequelize');
+const bcrypt = require('bcryptjs'); // Importar bcrypt
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // Relación hasMany con Recipe
       User.hasMany(models.Recipe, { foreignKey: 'UserId' });
     }
   }
+
   User.init({
     name: {
       type: DataTypes.STRING,
@@ -22,15 +19,29 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'user',
     }
   }, {
     sequelize,
     modelName: 'User',
     timestamps: true,
+    hooks: {
+      // Hook antes de crear un nuevo usuario
+      beforeCreate: async (user, options) => {
+        // Generamos un "salt" para el hash
+        const salt = await bcrypt.genSalt(10);
+        // Hasheamos la contraseña del usuario usando el salt generado
+        user.password = await bcrypt.hash(user.password, salt);
+      }
+    }
   });
 
   return User;
