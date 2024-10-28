@@ -1,13 +1,11 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-const bcrypt = require('bcryptjs'); // Importar bcrypt
+const { Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Recipe, { foreignKey: 'UserId' });
+      User.hasMany(models.Booking, { foreignKey: 'id_usuario' });
     }
   }
 
@@ -27,21 +25,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.STRING,
-      defaultValue: 'user',
-    }
+      defaultValue: 'cliente',
+    },
   }, {
     sequelize,
     modelName: 'User',
-    timestamps: true,
     hooks: {
-      // Hook antes de crear un nuevo usuario
-      beforeCreate: async (user, options) => {
-        // Generamos un "salt" para el hash
+      beforeCreate: async (user) => {
         const salt = await bcrypt.genSalt(10);
-        // Hasheamos la contraseña del usuario usando el salt generado
         user.password = await bcrypt.hash(user.password, salt);
-      }
-    }
+      },
+    },
   });
 
   return User;

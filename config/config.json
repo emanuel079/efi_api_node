@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "node",
+    "database": "efi_node",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Lauti2002!",
+    "database": "efi_node_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Lauti2002!",
+    "database": "efi_node_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

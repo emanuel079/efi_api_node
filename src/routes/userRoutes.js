@@ -1,10 +1,11 @@
 const express = require('express');
-const { createUser, getUsers, getUserById, loginUser } = require('../controllers/userController');
+const { createUser, getUsers, getUserById, loginUser } = require('../controllers/userController'); // Asegúrate de que la ruta a userController sea correcta
 const router = express.Router();
 
-router.post('/users', createUser);
-router.get('/users', getUsers);
-router.get('/users/:id', getUserById);
-router.post('/users/login', loginUser); // Nueva ruta para el login
+// Rutas para usuarios
+router.post('/users', createUser);             // Crear un nuevo usuario
+router.get('/users', getUsers);                 // Obtener todos los usuarios
+router.get('/users/:id', getUserById);          // Obtener un usuario por ID
+router.post('/users/login', loginUser);         // Ruta para el inicio de sesión
 
-module.exports = router;
+module.exports = router;                         // Exporta el router
